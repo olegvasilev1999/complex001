@@ -9,7 +9,7 @@ struct complex_t {
     float imag;
 
 
-    istream & read(istream & stream, complex_t & complex) {
+    istream & read(istream & stream) {
         float x, y;
         char a, b, c;
 
@@ -22,7 +22,7 @@ struct complex_t {
         return stream;
     }
 
-    ostream & write(ostream & stream, complex_t complex) {
+    ostream & write(ostream & stream)const {
         stream << "(" << real << "," << imag << ")";
         return stream;
     }
@@ -64,26 +64,26 @@ int main() {
     complex_t a,b,c;
     char op;
 
-    if (a.read(cin, a)) {
+    if (a.read(cin)) {
         cin >> op;
-        if (b.read(cin, b)) {
+        if (b.read(cin)) {
             switch (op) {
                 case '+':
                     c = a.add(b);
-                    c.write(cout,c);
+                    c.write(cout);
                     break;
                 case '-':
                     c = a.sub(b);
-                    c.write(cout,c);
+                    c.write(cout);
 
                     break;
                 case '*':
                     c = a.mul(b);
-                    c.write(cout,c);
+                    c.write(cout);
                     break;
                 case '/':
                     c = a.div(b);
-                    c.write(cout,c);
+                    c.write(cout);
                     break;
             }
         }else  cout <<"An error has occured while reading input data";
